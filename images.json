@@ -1,0 +1,12 @@
+{
+ "example": {
+    "x": 70,
+    "y": 334,
+    "max_width": 500,
+    "max_height": 54,
+    "font": "PermanentMarker",
+    "color": [0, 0, 0],
+    "image": "example",
+    "fontsize": 135
+ }
+}

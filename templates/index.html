@@ -1,0 +1,47 @@
+{% extends active_theme %}
+
+{% block content %}
+<div id="wrapper">
+  <h2>
+    Make and Share a Customized Climate Action Sign
+  </h2>
+  <p>To get started enter your text into a field below.</p>
+  {% for sign in signs %}
+  <div class="{{ cycle(['left', 'right'], loop.index0) }}-column">
+    <div class="sign-wrapper">
+      <form action="submit.php" method="post">
+        <input type="hidden" name="template" value="{{ sign }}" />
+        <input name="username" />
+        {% if images[sign] and images[sign]['placement'] %}
+        {% for x in images[sign]['placement'] %}
+        <input type="text" name="gen_text[]" id="gen_text-{{ loop.index0 }}"
+               style="width: 220px;"style="width: 200px;"
+               value="Your Text Here" onclick="this.value='';" />
+        {% endfor %}                   
+        {% else %}
+        <input type="text" name="gen_text[]" id="gen_text"
+               style="width: 220px;"style="width: 200px;"
+               value="Your Text Here" onclick="this.value='';" />
+        {% endif %}
+        <input class="button" type="button" id="gen_button" value="Preview"
+               style="width: 135px; margin-top: 2px" />
+        <input class="button" type="submit" value="Save & Share"
+               style="float: left; width: 375px; margin: 5px 0 15px 0;"/>
+        <img id="sign"
+             src="/image.php?t={{ sign }}"
+             width="374" alt="your-text" />
+        <div style="clear: both"></div>
+      </form>
+    </div>
+    <div style="clear: both"></div>
+  </div>
+
+  {% if cycle(['left', 'right'], loop.index0) == "right" %}
+  <div style="padding: 15px 0; float: left; width: 101%;"></div>
+  {% endif %}
+  
+  {% endfor %}
+
+  <div style="clear: both"></div>
+</div>
+{% endblock %}

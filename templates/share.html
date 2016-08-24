@@ -1,0 +1,86 @@
+{% extends active_theme %}
+
+{% block head %}
+<meta property="og:image" content="{{ sign.image_url }}&resize=facebook">
+{% endblock %}
+
+{% block content %}
+<div id="wrapper">
+
+  <div class="fb-like"
+       data-send="false" data-layout="box_count"
+       data-width="450" data-show-faces="true"></div>
+  <h2>Share This Sign</h2>
+  <p>
+    Download this image and make it your Facebook profile
+    or share it on other social media.
+  </p>
+  <div id="left-column-share" style="margin-bottom: 25px">
+    <img data-template="{{ sign.template|escape('url') }}"
+         data-message="{{ sign.message_str }}"
+         src="{{ sign.image_url }}"
+         width="380">
+  </div>
+  <div id="right-column-share">
+    <div style="background-color: #ececec;
+                border: 1px solid #cad0d0;
+                padding: 11px; 
+                cursor: pointer; 
+                text-align: center;
+                font-weight: bold;
+                float:right"
+         onclick="makeProfilePhoto();">
+      <a href='#'
+         onclick='makeProfilePhoto(); return false;'>
+        Set as Facebook Profile Picture
+      </a>
+      <img style='display: block' id='fb_make_profile'
+           src="/images/fb_make_profile.png">
+      <div id='throbber' style='text-align: center'></div>
+    </div>
+  </div>
+
+  <div style="clear: both;">
+    <div id='socialmedia'>
+      <div>Share via:</div>
+      <div id='fb-share'>
+        <a id='facebook_share'
+           href="http://www.facebook.com/sharer.php?u={{ sign.absolute_url }}">
+          Share on Facebook
+        </a>
+        Facebook
+      </div>
+      <div id='twitter-share'>
+        <a id="twitter_share"
+           href="http://twitter.com/intent/tweet?text={{ sign.tweet_text|escape('url') }}&url={{ sign.absolute_url|escape('url') }}&hashtags={{ sign.hashtags }}&via={{ sign.twitter_via }}">
+          Share on twitter!</a>
+        Twitter
+      </div>
+      <div id="email-share">
+        <a id="email_share"
+           href="mailto:?subject={{ sign.email_subject|escape('url') }}&body={{ sign.email_body|escape('url') }}">
+          Share via email!
+        </a>
+        Email
+      </div>
+    </div>
+    <div id='download'>
+      <div>Download</div>
+      <div id='download-box'>
+        <a id='download-link'
+           href="{{ sign.image_url }}&resize=paper&download=true">Download</a>
+        Download
+      </div>
+    </div>
+    <div class='clearer'></div>
+    <br />
+    Now that you've made your sign, share it far and wide. Share it on social networks, print it out and post it up, and spread the word however you can.<br />
+    <br />
+    <a href='/'>Make another customized sign here &gt;&gt;</a><br />
+    <br />
+    <div class='clearer'></div>
+  </div>
+  <div style="clear:both;"></div>
+
+</div>
+{% endblock %}

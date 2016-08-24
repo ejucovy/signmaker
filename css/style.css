@@ -1,0 +1,268 @@
+input[name=username] {
+  display: none;
+}
+.prompt-label {
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+body {
+  font-family: ff-din-round-web-pro-1,ff-din-round-web-pro-2,Calibri,tahoma,sans-serif;
+  color: #555555;
+  background: #00355F; 
+}
+h1, h2, h3, h4, h5 {
+  font-family: ff-din-round-web-pro-1,ff-din-round-web-pro-2,Calibri,tahoma,sans-serif;
+}
+a {
+  color: #2789B0;
+  text-decoration: none;
+}
+#more_info_form{
+  width: 500px;
+  margin-top: 0px;
+  padding: 0px;
+}
+#more_info_form input {
+  width: 300px;
+}
+#more_info_form_wrapper{
+}
+
+.form_cell_left{
+  width: 100px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #6F6F6F;
+  font-family: arial;
+  padding: 3px 10px 3px 8px;
+  float: left;
+}
+.form_cell_right{
+  width: 200px;
+  float: right;
+}
+.form_row{
+  clear: both;
+  float: left;
+  margin-top: 3px;
+}
+.clearer{
+  clear: both;
+}
+#wrapper {
+  padding: 20px; margin: 5px auto 0px auto;
+  border: 1px solid #cdcdcd;
+  background: #ffffff;
+}
+#footer a {
+  color: #ffffff;
+}
+#wrapper h2 {
+  margin: 0;
+  font-size: 33px;
+  font-weight: normal;
+  text-transform: uppercase;
+  padding: 20px 0 0px 0;
+  line-height: 32px;
+}
+.left-column {
+  width: 410px; 
+  margin: 0 40px 0 21px;
+  float: left;
+}
+.right-column {
+  width: 410px;
+  float: left;
+}
+#left-column-share{
+  width: 375px; 
+  margin: 0 20px 0 0;
+  float: left;
+}
+#right-column-share{
+  float: left;
+  width: 500px;
+}
+#more_info{
+  padding: 5px;
+  margin: 0px 0px 0px 0;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+#more_info h3 {
+  padding: 0;
+  margin: 0;
+}
+#facebook_share, #twitter_share, #email_share, #download-link, #print-link {
+  width: 92px;
+  height: 92px;
+  text-indent: -9999px;
+  display: block;
+}
+#facebook_share{
+  background: url(../images/icons/facebook.jpg) 0% 0% no-repeat;
+}
+#twitter_share{
+  background: url(../images/icons/twitter.jpg) 0% 0% no-repeat;
+}
+#email_share{
+  background: url(../images/icons/email.jpg) 0% 0% no-repeat;
+}
+#download-link{
+  background: url(../images/icons/download.jpg) 0% 0% no-repeat;
+}
+input {
+  background: #f2f3f5;
+  padding: 5px;
+  font-size: 15px;
+  color: #777777;
+  border: 1px solid #cdcdcd;
+  float: left;
+}
+#logo {
+  padding: 5px; margin: 0px auto;
+}
+.button {
+  background: #e5e5e5; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5e5e5', endColorstr='#c3c2c0'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#c3c2c0)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #e5e5e5,  #c3c2c0); /* for firefox 3.6+ */ 
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin: 0 5px;
+  color: #2c3942;
+  border: 1px solid #8c969f;
+}
+.example {
+  margin:  0 4px 0 0;
+}
+#signup {
+  padding: 20px; 
+  margin: 0 0 10px 0;
+  background: #424a4c;
+  color: #fefffd;
+}
+@media screen and (min-width: 931px) {
+  #signup, #logo, #wrapper {
+    width: 900px;
+  }
+}
+#signup-header{
+  font-size: 28pt;
+  line-height: 43px;
+  text-transform: uppercase;
+}
+#signup-body{
+  margin-top: 15px;
+  font-family: arial;
+  font-size: 10pt;
+  line-height: 20px;
+}
+#footer {
+  padding:0px; margin: 0px auto 10px auto;
+  width: 940px;
+  color: #ffffff;
+}
+.sign-wrapper {
+  background: #dcdcdc;
+  padding: 15px;
+  border: 1px solid #bcbcbc;
+}
+
+.twitter-share-button, .fb-like{
+  float: right;
+  margin-left: 10px;
+}
+
+.fb-like{
+  width: 50px;
+}
+
+#socialmedia, #download, #print {
+  background-color: #ececec;
+  border: 1px solid #cad0d0;
+  float: left;
+  height: 128px;
+  padding: 11px;
+  font-weight: bold;
+}
+
+#socialmedia{
+  width: 302px;
+  margin-right: 13px;
+}
+
+#download, #print {
+  width: 97px;
+}
+
+#fb-share, #twitter-share, #email-share, #download-box, #print-box {
+  width: 92px;
+  font-family: arial;
+  font-size: 8pt;
+  float: left;
+}
+#fb-share, #twitter-share{
+  margin-right: 11px;
+}
+#signup-sign{
+  width: 433px;
+  height: 50px;
+  text-indent: -9999px;
+  display: block;
+  margin-top: 10px;
+  background: url(../images/sign-up-now.png) 0% 0% no-repeat;
+}
+
+#stop_keystone_photo{
+  float: right;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 920px) {
+    #wrapper, #footer, #signup, #signup-sign {
+	width: auto;
+	max-width: 100%;
+    }
+    .left-column, .right-column {
+	float: none;
+	display: block;
+	margin: 30px auto;
+	max-width: 80%;
+	min-width: 300px;
+    }
+
+    .sign-wrapper form input {
+	width: 100% !important;
+    }
+    .sign-wrapper form #gen_button {
+	margin: 0;
+    }
+    .sign-wrapper form #sign {
+	width: 100% !important;
+    }
+
+    #left-column-share, #right-column-share {
+	width: 100%;
+	float: none;
+    }
+    #left-column-share img[data-message] {
+	width: 100% !important;
+    }
+    #right-column-share > div:first-child {
+	float: none !important;
+    }
+    #right-column-share > div:first-child img {
+	margin: 5px auto 0;
+    }
+    #socialmedia {
+	margin-right: 0;
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 30px;
+	height: auto;
+    }
+    #download {
+	margin-top: 30px;
+    }
+}

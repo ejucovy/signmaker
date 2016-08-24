@@ -1,0 +1,21 @@
+{
+    "": {
+        "theme": "general",
+        "images": [
+          "example"
+        ],
+	"twitter": {
+	    "text": "Make your own sign to help the cause!",
+	    "via": "ejucovy",
+	    "hashtags": "uniteblue"
+	},
+	"facebook": {
+	    
+	},
+	"email": {
+	    "subject": "Check out this sign I made",
+	    "body": "Check out this sign I made for the cause: "
+	}
+    }
+}
+

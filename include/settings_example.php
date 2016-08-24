@@ -1,0 +1,3 @@
+<?php
+$vardir = "/tmp/signmaker/";
+?>

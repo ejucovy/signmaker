@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Make and Share a Customized Sign</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type='text/javascript' language='javascript' src='/javascript/jquery-1.6.4.min.js'></script>
+    <script type='text/javascript' language='javascript' src='/javascript/jquery-modal-0.2.5/jquery.modal.js'></script>
+    <script type='text/javascript' language='javascript' src='/javascript/throbber.js'></script>
+    <script type='text/javascript' language='javascript' src='/javascript/genui.js'></script>
+    <script type="text/javascript" src="http://use.typekit.com/mnx5rpz.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link href="/css/style.css" media="screen" rel="Stylesheet" type="text/css" />
+    <link href="/javascript/jquery-modal-0.2.5/jquery.modal.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+/*
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXX']);
+      _gaq.push(['_setDomainName', 'signmaker.org']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+*/
+    </script>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 'xxxxxxx',
+      status     : true,             
+      xfbml      : true
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+  };
+
+  // Load the SDK asynchronously
+  (function(){
+     // If we've already installed the SDK, we're done
+     if (document.getElementById('facebook-jssdk')) {return;}
+
+     // Get the first script element, which we'll use to find the parent node
+     var firstScriptElement = document.getElementsByTagName('script')[0];
+
+     // Create a new script element and set its id
+     var facebookJS = document.createElement('script'); 
+     facebookJS.id = 'facebook-jssdk';
+
+     // Set the new script's source to the source of the Facebook JS SDK
+     facebookJS.src = '//connect.facebook.net/en_US/all.js';
+
+     // Insert the Facebook JS SDK into the DOM
+     firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
+   }());
+
+function postPhoto(user_id, photo_url) {
+  FB.api("/"+user_id+"/photos", "post", {"url": photo_url}, function(response) {
+    var photo_id = response.id;
+    if( !photo_id ) { 
+      $("#throbber").html(""); $("#fb_make_profile").show();
+      $("<div style='text-align:center'>").html("<h3>Uh oh.</h3><p>There was an unexpected error uploading your sign to Facebook. Please use the buttons below to share this sign with your friends. You can download the image and then upload it to Facebook manually.</p>")
+          .hide().appendTo("#wrapper").modal();
+      return;
+    }
+    $("#throbber").html(""); $("#fb_make_profile").show();
+    $("<div style='text-align:center'>").html("<h3 style='margin:0;margin-top:10px'>Almost done!</h3><p>Your sign has been uploaded to Facebook.  To set it as your profile picture, click this button:</p><form method='GET' target='_blank' action='https://www.facebook.com/photo.php'><input type='hidden' name='makeprofile' value='1' /><input type='hidden' name='fbid' value='"+photo_id+"' /><input style='cursor: pointer; width:100%; padding:15px; margin: 0' class='button' type='submit' value='Crop image and confirm' /></form>")
+              .appendTo("div#wrapper").modal();
+  });
+}
+
+function makeProfilePhoto() {
+ var photo_url = window.location.origin
+       + "/image.php?t=" + $("#left-column-share img").data("template")
+       + $("#left-column-share img").data("message");
+ 
+ $("#fb_make_profile").hide();
+ var throbber = new Throbber({"size": 100, "color": "black"})
+      .appendTo( document.getElementById("throbber") )
+      .start();
+  
+ FB.login(function(response) {
+   if (response.authResponse) {
+     FB.api('/me', function(response) {
+       var user_id = response.id;
+       postPhoto(user_id, photo_url); //@@TODO
+     });
+   } else {
+     $("<div style='text-align: center'>").html("<p>To set your Facebook profile photo, you need to give us permission to view and post to your Facebook account.</p><p>You can also download your sign using the buttons below, and post it on Facebook yourself.</p>")
+        .hide().appendTo("#wrapper").modal();
+     $("#throbber").html(""); $("#fb_make_profile").show();
+   }
+ }, {scope: "user_photos,publish_actions"});
+}
+</script>
+<div id="fb-root"></div>
+    
+    <div id="logo"><img src="/images/logo.png"></div>
+    
+    {% block content %}
+    {% endblock %}
+    
+    <div id="footer">
+      <div id="signup">
+        <img style="max-width: 300px" src='images/footer.png' id='stop_keystone_photo' alt=''>
+        <div id='signup-header'>Ready to do more?<br /></div>
+        <div id='signup-body'>Sign up at <a href="http://example.com">our website</a> -- we'll send you a quick note at crucial moments when your voice can make a difference. 
+        </div>
+        <a id='signup-sign' href="http://www.example.com/">Sign Up Now</a>
+        <div class='clearer'></div>
+      </div>
+  </body>
+</html>
