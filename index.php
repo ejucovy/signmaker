@@ -23,7 +23,14 @@ if ($signs_prefilled) {
 
 $skin = $page['theme'];
 
-$loader = new Twig_Loader_Filesystem($vardir . "templates");
+if (file_exists($vardir . "templates/themes/" . $skin) && !is_file($vardir . "templates/themes/" . $skin)) {
+    $loader1 = new Twig_Loader_Filesystem($vardir . "templates/themes/" . $skin);
+    $loader2 = new Twig_Loader_Filesystem($vardir . "templates");
+    $loader = new Twig_Loader_Chain(array($loader1, $loader2));
+} else {
+    $loader = new Twig_Loader_Filesystem($vardir . "templates");
+}
+
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true,
     'cache' => '/tmp/signmaker-twig-cache',

@@ -48,7 +48,13 @@ $sign['tweet_text'] = $page['twitter']['text'];
 $sign['email_subject'] = $page['email']['subject'];
 $sign['email_body'] = $page['email']['body'] . $sign['image_url'];
 
-$loader = new Twig_Loader_Filesystem($vardir . "templates");
+if (file_exists($vardir . "templates/themes/" . $page['theme']) && !is_file($vardir . "templates/themes/" . $page['theme'])) {
+    $loader1 = new Twig_Loader_Filesystem($vardir . "templates/themes/" . $page['theme']);
+    $loader2 = new Twig_Loader_Filesystem($vardir . "templates");
+    $loader = new Twig_Loader_Chain(array($loader1, $loader2));
+} else {
+    $loader2 = new Twig_Loader_Filesystem($vardir . "templates");
+}
 
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true,
